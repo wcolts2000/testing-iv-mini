@@ -35,5 +35,16 @@ describe("server.js", () => {
         .send({ firstName: "Kai", lastName: "Lovingfoss" });
       expect(response.body).toEqual({ hello: "Kai Lovingfoss" });
     });
+    it("should return 400 if firstName or lastName is missing", async () => {
+      let response = await request(server)
+        .post("/greet")
+        .send({ firstName: "frodo" });
+      expect(response.status).toBe(400);
+
+      response = await request(server)
+        .post("/greet")
+        .send({ lastName: "baggins" });
+      expect(response.status).toBe(400);
+    });
   });
 });
