@@ -9,3 +9,5 @@ function name(args) => return something;
 - data access: talk to the persistent data store.
 
 set the test environment to run on 'node' instead of a browser
+
+window.setTimeout > global.setTimeout (in node, window isn't available, thats from a browser)
